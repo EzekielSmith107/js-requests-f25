@@ -112,6 +112,9 @@ const repeatMyParam = () => {
         console.log(res.data);
         document.getElementById("repeat-text").textContent = res.data;
     })
+    .catch(err => {
+        console.log(err);
+    })
 }
 
 document.querySelector("#repeat-button").addEventListener("click", repeatMyParam);
@@ -173,7 +176,7 @@ document.querySelector("#repeat-button").addEventListener("click", repeatMyParam
 
 // Edit code in Problem 8
 const queryRequest = () => {
-    axios.get("http://localhost:3000/repeat/:repeat")
+    axios.get("http://localhost:3000/query-test?name=Ezekiel")
     .then(res => {
         console.log(res.data);
     })
