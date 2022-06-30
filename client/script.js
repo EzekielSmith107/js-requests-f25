@@ -77,7 +77,17 @@ sayHelloButton.addEventListener("click", sayHello);
 */ 
 
 const ohMy = () => {
-    // YOUR CODE HERE
+    axios.get("http://localhost:3000/animals")
+    .then(res => {
+        for(i = 0; i < res.data.length; i++) {
+            let newP = document.createElement("p");
+            newP.textContent = res.data[i];
+            document.body.appendChild(newP);
+        }
+    })
+    .catch(err => {
+        console.log(err);
+    })
 }
 
 document.getElementById('animals-button').addEventListener('click', ohMy)
@@ -97,8 +107,14 @@ document.getElementById('animals-button').addEventListener('click', ohMy)
 */
 
 const repeatMyParam = () => {
-    //YOUR CODE HERE
+    axios.get(`http://localhost:3000/repeat/animals`)
+    .then(res => {
+        console.log(res.data);
+        document.getElementById("repeat-text").textContent = res.data;
+    })
 }
+
+document.querySelector("#repeat-button").addEventListener("click", repeatMyParam);
 
 // PROBLEM 7
 /*
@@ -121,8 +137,17 @@ const repeatMyParam = () => {
 */
 
 // CODE HERE
+// const queryRequest = () => {
+//     axios.get("http://localhost:3000/query-test")
+//     .then(res => {
+//         console.log(res.data);
+//     })
+//     .catch(err => {
+//         console.log(err);
+//     })
+// };
 
-
+// document.getElementById("query-button").addEventListener("click", queryRequest);
 
 ////////////////
 //INTERMEDIATE//
@@ -147,7 +172,17 @@ const repeatMyParam = () => {
 */
 
 // Edit code in Problem 8
+const queryRequest = () => {
+    axios.get("http://localhost:3000/repeat/:repeat")
+    .then(res => {
+        console.log(res.data);
+    })
+    .catch(err => {
+        console.log(err);
+    })
+};
 
+document.getElementById("query-button").addEventListener("click", queryRequest);
 
 
 ////////////
